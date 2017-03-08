@@ -2,10 +2,10 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import MainView from './ui/mainView';
 import './index.css';
 
 ReactDOM.render(
-    <App />,
+    <MainView />,
     document.getElementById('root')
 );
