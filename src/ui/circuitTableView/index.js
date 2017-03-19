@@ -16,7 +16,7 @@ export default class CircuitGridView extends BaseComponent {
             { key: 'stageId', name: '化成步骤' },
             { key: 'stage', name: '化成阶段' }
         ];
-            
+
         this.state = {
             circuits: []
         };
@@ -34,10 +34,12 @@ export default class CircuitGridView extends BaseComponent {
         return (
             <div>
                 <ColorBar />
-                <ReactDataGrid
-                    columns={this.mColumns}
-                    rowGetter={(i) => { return this.state.circuits[i]; }}
-                    rowsCount={this.state.circuits.length} />
+                <div style={styles.grid}>
+                    <ReactDataGrid
+                        columns={this.mColumns}
+                        rowGetter={(i) => { return this.state.circuits[i]; }}
+                        rowsCount={this.state.circuits.length} />
+                </div>
             </div>
         );
     }
@@ -61,3 +63,9 @@ export default class CircuitGridView extends BaseComponent {
         });
     }
 }
+
+const styles = {
+    grid: {
+        paddingTop: 20
+    }
+};
