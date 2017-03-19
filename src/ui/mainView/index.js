@@ -1,9 +1,10 @@
 
 import React from 'react';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, PageHeader, Tabs, Tab } from 'react-bootstrap';
-import BurgerMenu from 'react-burger-menu';
+import { Tabs } from 'amazeui-react';
 import BaseComponent from '../../components/baseComponent';
+import TitleBar from '../../components/business/titleBar';
 import CircuitGridView from '../circuitGridView';
+import CircuitTableView from '../circuitTableView';
 import './menu.less';
 
 export default class MainView extends BaseComponent {
@@ -12,47 +13,16 @@ export default class MainView extends BaseComponent {
     }
 
     render() {
-        const Menu = BurgerMenu['pushRotate'];
-
         return (
-            <div id="outer-container" style={{ height: '100%' }}>
-                <Menu id={'slide'} pageWrapId={'page-wrap'} outerContainerId={'outer-container'}>
-                    <h2 key="0"><i className="fa fa-fw fa-inbox fa-2x" /><span>Sidebar</span></h2>
-                    {this._getMenus()}
-                </Menu>
-                <div id="page-wrap" style={styles.main}>
-                    <div style={styles.header}>
-                        <Navbar>
-                            <Navbar.Header>
-                                <Navbar.Brand>
-                                    <a href="#" style={styles.title}>南都蓄电池生产系统</a>
-                                </Navbar.Brand>
-                            </Navbar.Header>
-                            <Navbar.Collapse>
-                                <Nav>
-                                    <NavItem eventKey={1} href="#">Link</NavItem>
-                                    <NavItem eventKey={2} href="#">Link</NavItem>
-                                    <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-                                        <MenuItem eventKey={3.1}>Action</MenuItem>
-                                        <MenuItem eventKey={3.2}>Another action</MenuItem>
-                                        <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                                        <MenuItem divider />
-                                        <MenuItem eventKey={3.3}>Separated link</MenuItem>
-                                    </NavDropdown>
-                                </Nav>
-                                <Nav pullRight>
-                                    <NavItem eventKey={1} href="#">Link Right</NavItem>
-                                    <NavItem eventKey={2} href="#">Link Right</NavItem>
-                                </Nav>
-                            </Navbar.Collapse>
-                        </Navbar>
-                    </div>
-                    <div>
-                        <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-                            <Tab eventKey={1} title="回路网格"><CircuitGridView /></Tab>
-                            <Tab eventKey={2} title="回路列表">Tab 2 content</Tab>
-                        </Tabs>
-                    </div>
+            <div style={styles.main}>
+                <div style={styles.header}>
+                    <TitleBar />
+                </div>
+                <div>
+                    <Tabs>
+                        <Tabs.Item eventKey={1} title="回路网格"><CircuitGridView /></Tabs.Item>
+                        <Tabs.Item eventKey={2} title="回路列表"><CircuitTableView /></Tabs.Item>
+                    </Tabs>
                 </div>
             </div>
         );
@@ -73,7 +43,8 @@ const styles = {
     header: {
         marginLeft: 10,
         marginTop: 10,
-        marginRight: 10
+        marginRight: 10,
+        marginBottom: 10
     },
     title: {
         paddingLeft: 60
